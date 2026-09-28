@@ -3,7 +3,6 @@
 -- 교안: 02_DataBase_Basic_SQL (MySQL 8.4 LTS 기준)
 -- ============================================================
 
-USE world;
 
 -- BETWEEN 연산자
 -- 테이블 country 에서 Population 필드 값이 백만 이상 오백만 이하이고
@@ -15,8 +14,8 @@ SELECT
 FROM 
   country
 WHERE
-  Population BETWEEN 1000000 AND 5000000
-  -- Population >= 1000000 AND Population <= 5000000
+  Population >= 1000000 AND Population <= 5000000
+  -- Population BETWEEN 1000000 AND 5000000
   AND GNP < GNPOld;
 
 
@@ -36,24 +35,13 @@ WHERE
 -- LIKE Operator 활용 1
 -- 테이블 country에서 Name 필드 값이 'South'로 시작하는 데이터의
 -- Name, Region, Population, GNP 조회
-SELECT 
-  Name, Region, Population, GNP
-FROM 
-  country
-WHERE
-  Name LIKE 'South%';
 
 
 -- LIKE Operator 활용 2
 -- 테이블 country에서 Name 필드 값이 'South'로 시작하고,
 -- 'South' 뒤에 임의의 문자 6개가 이어지는 총 11자 데이터의
 -- Name, Region, Population, GNP 조회 ('_' 는 단일 문자와 일치)
-SELECT 
-  Name, Region, Population, GNP 
-FROM 
-  country
-WHERE
-  Name LIKE 'South______';
+
 
 
 -- IS Operator
@@ -68,13 +56,7 @@ WHERE
 --   AND IndepYear != NULL;
 
 -- IS 연산자를 통해 NULL 인지 확인
-SELECT 
-  Name, GNPOld, IndepYear
-FROM 
-  country
-WHERE
-  GNPOld IS NULL
-  AND IndepYear IS NOT NULL;
+
 
 
 -- 연산자 우선순위 관련 오동작 예시
